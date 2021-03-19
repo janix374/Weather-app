@@ -1,5 +1,5 @@
 import { GET_COUNTRY } from '../constants/actionTypes';
-import countriesArray from '../../components/dbCountry';
+import countriesArray from '../../components/countriesArray';
 
 export const getCountry = (countryId) => {
 	return {

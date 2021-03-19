@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import WetherEngine from './weatherLogic/WetherEngine';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCountry } from '../redux/actions/countries';
-import countriesArray from './dbCountry';
+import countriesArray from './countriesArray';
 
 const useStyles = makeStyles((theme) => ({
 	button: {
