@@ -130,12 +130,12 @@ const CardTemperature = ({
 				<Typography variant='body2' component='p'>
 					Feels Like: {feelslike} &#8451;
 				</Typography>
-				<Typography variant='body2' component='p'>
+				{/* <Typography variant='body2' component='p'>
 					Sunrise time: {moment.unix(sunrise).format('HH:mm')}
 				</Typography>
 				<Typography variant='body2' component='p'>
 					Sunset time: {moment.unix(sunset).format('HH:mm')}
-				</Typography>
+				</Typography> */}
 				<p>{condition}</p>
 			</CardContent>
 			<CardActions disableSpacing></CardActions>

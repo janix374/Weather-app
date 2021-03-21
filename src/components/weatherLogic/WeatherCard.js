@@ -21,14 +21,6 @@ const WeatherCard = ({ item }) => {
 				Country : {item.sys.country}
 			</Typography>
 			<Box component='span' m={1}>
-				<Typography variant='body1' component='p'>
-					City geo location, longitude : {item.coord.lon}
-				</Typography>
-				<Typography variant='body1' component='p'>
-					City geo location, latitude : {item.coord.lat}
-				</Typography>
-			</Box>
-			<Box component='span' m={1}>
 				<CardTemperature
 					temp={item.main.temp}
 					pressure={item.main.pressure}
@@ -39,6 +31,14 @@ const WeatherCard = ({ item }) => {
 					feelslike={item.main.feels_like}
 					condition={item.weather[0].main}
 				/>
+			</Box>
+			<Box component='span' m={1}>
+				<Typography variant='body1' component='p'>
+					City geo location, longitude : {item.coord.lon}
+				</Typography>
+				<Typography variant='body1' component='p'>
+					City geo location, latitude : {item.coord.lat}
+				</Typography>
 			</Box>
 		</Grid>
 	);

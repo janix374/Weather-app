@@ -12,6 +12,7 @@ import WetherEngine from './weatherLogic/WetherEngine';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCountry } from '../redux/actions/countries';
 import countriesArray from './countriesArray';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 const useStyles = makeStyles((theme) => ({
 	button: {
@@ -21,6 +22,12 @@ const useStyles = makeStyles((theme) => ({
 	formControl: {
 		margin: theme.spacing(1),
 		minWidth: 120,
+	},
+	imageWeather: {
+		width: '70%',
+	},
+	imageWeatherContainer: {
+		textAlign: 'center',
 	},
 }));
 
@@ -73,9 +80,23 @@ const SelectCountry = () => {
 				<Typography variant='h4' component='h4'>
 					API from https://openweathermap.org
 				</Typography>
+				<Typography
+					variant='body1'
+					component='p'
+					className={classes.imageWeatherContainer}
+				>
+					<img
+						src={process.env.PUBLIC_URL + '/pics/world.jpg'}
+						alt='world'
+						className={classes.imageWeather}
+					/>
+				</Typography>
+			</Grid>
+			<Grid item sm={12} md={3}>
 				<Typography variant='h5' component='h5'>
 					Choose a country
 				</Typography>
+
 				<form>
 					<FormControl className={classes.formControl}>
 						<InputLabel id='demo-controlled-open-select-label'>
@@ -93,6 +114,10 @@ const SelectCountry = () => {
 							{countriesArray.map((item) => {
 								return (
 									<MenuItem value={`${item.id}`} key={item.id}>
+										<img
+											src={process.env.PUBLIC_URL + `/flags/${item.img}`}
+											alt='a'
+										/>{' '}
 										{item.country}
 									</MenuItem>
 								);
@@ -118,7 +143,7 @@ const SelectCountry = () => {
 								{selectCities.cities.map((city, index) => {
 									return (
 										<MenuItem value={`${city}`} key={index}>
-											{city}
+											<LocationOnIcon /> {city}
 										</MenuItem>
 									);
 								})}
@@ -127,7 +152,7 @@ const SelectCountry = () => {
 					)}
 				</form>
 			</Grid>
-			<Grid item xs={12} container>
+			<Grid item sm={12} md={9} container>
 				{city.length > 0 ? (
 					<WetherEngine city={city} />
 				) : (
