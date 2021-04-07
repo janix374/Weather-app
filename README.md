@@ -2,29 +2,28 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Weather API - OpenWeatherMap
+### Weather API - OpenWeatherMap
 
 For the development of this project, I used the following tools :
 React, redux, material-ui, moment
 
-## Available Scripts
+### Installation
 
-In the project directory, you can run:
+1. Clone the repo
+```
+git clone https://github.com/janix374/weather-app.git
+```
+2. Install NPM packages
+```
+npm install
+```
+3. Start project 
+```
+npm start
+```
 
-### `yarn start`
+![](screenshots/wa1.jpg)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![](screenshots/wa2.jpg)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![](screenshots/wa3.jpg)
