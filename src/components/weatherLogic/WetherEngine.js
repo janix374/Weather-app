@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getWeather } from '../../redux/actions/weather';
 import { Grid, Typography } from '@material-ui/core';

@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Box } from '@material-ui/core';
 import CardTemperature from './CardTemperature';
+import LocationMap from './LocationMap';
 
 const useStyles = makeStyles((theme) => ({
 	weatherClass: {
@@ -12,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
 const WeatherCard = ({ item }) => {
 	const classes = useStyles();
 
+	console.log('item component', item.coord.lon);
 	return (
 		<Grid item sm={12} className={classes.weatherClass}>
 			<Typography variant='h5' component='p'>
@@ -32,14 +34,15 @@ const WeatherCard = ({ item }) => {
 					condition={item.weather[0].main}
 				/>
 			</Box>
-			<Box component='span' m={1}>
+			{/* <Box component='span' m={1}>
 				<Typography variant='body1' component='p'>
 					City geo location, longitude : {item.coord.lon}
 				</Typography>
 				<Typography variant='body1' component='p'>
 					City geo location, latitude : {item.coord.lat}
 				</Typography>
-			</Box>
+			</Box> */}
+			{/* <LocationMap lng={item.coord.lon} lat={item.coord.lat} /> */}
 		</Grid>
 	);
 };

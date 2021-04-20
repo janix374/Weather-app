@@ -80,17 +80,6 @@ const SelectCountry = () => {
 				<Typography variant='h4' component='h4'>
 					API from https://openweathermap.org
 				</Typography>
-				<Typography
-					variant='body1'
-					component='p'
-					className={classes.imageWeatherContainer}
-				>
-					<img
-						src={process.env.PUBLIC_URL + '/pics/world.jpg'}
-						alt='world'
-						className={classes.imageWeather}
-					/>
-				</Typography>
 			</Grid>
 			<Grid item sm={12} md={3}>
 				<Typography variant='h5' component='h5'>
@@ -153,11 +142,7 @@ const SelectCountry = () => {
 				</form>
 			</Grid>
 			<Grid item sm={12} md={9} container>
-				{city.length > 0 ? (
-					<WetherEngine city={city} />
-				) : (
-					<p>You must select a city</p>
-				)}
+				{city.length > 0 ? <WetherEngine city={city} /> : <p></p>}
 			</Grid>
 		</Grid>
 	);

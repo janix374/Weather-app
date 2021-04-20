@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { CssBaseline, Container } from '@material-ui/core';
 import SelectCountry from './components/SelectCountry';
 
