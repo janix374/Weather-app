@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
 const WeatherCard = ({ item }) => {
 	const classes = useStyles();
 
-	console.log('item component', item.coord.lon);
 	return (
 		<Grid item sm={12} className={classes.weatherClass}>
 			<Typography variant='h5' component='p'>
@@ -34,15 +33,12 @@ const WeatherCard = ({ item }) => {
 					condition={item.weather[0].main}
 				/>
 			</Box>
-			{/* <Box component='span' m={1}>
+			<Box m={1}>
 				<Typography variant='body1' component='p'>
-					City geo location, longitude : {item.coord.lon}
+					City geo location on google map
 				</Typography>
-				<Typography variant='body1' component='p'>
-					City geo location, latitude : {item.coord.lat}
-				</Typography>
-			</Box> */}
-			<LocationMap lng={item.coord.lon} lat={item.coord.lat} />
+				<LocationMap lng={item.coord.lon} lat={item.coord.lat} />
+			</Box>
 		</Grid>
 	);
 };

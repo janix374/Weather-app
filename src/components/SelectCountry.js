@@ -6,6 +6,8 @@ import {
 	Select,
 	InputLabel,
 	MenuItem,
+	Link,
+	TextField,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import WetherEngine from './weatherLogic/WetherEngine';
@@ -28,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 	imageWeatherContainer: {
 		textAlign: 'center',
+	},
+	marginForCityNameInput: {
+		marginTop: '50px',
 	},
 }));
 
@@ -78,7 +83,10 @@ const SelectCountry = () => {
 		<Grid container>
 			<Grid item xs={12}>
 				<Typography variant='h4' component='h4'>
-					API from https://openweathermap.org
+					API from
+					<Link href='https://openweathermap.org'>
+						https://openweathermap.org
+					</Link>
 				</Typography>
 			</Grid>
 			<Grid item sm={12} md={3}>
@@ -137,6 +145,21 @@ const SelectCountry = () => {
 									);
 								})}
 							</Select>
+							<Typography
+								variant='body1'
+								component='p'
+								className={classes.marginForCityNameInput}
+							>
+								Or enter the city name
+							</Typography>
+							<TextField
+								className={classes.marginForCityNameInput}
+								id='outlined-required'
+								label='The city name'
+								variant='outlined'
+								value={city}
+								onChange={handleCity}
+							/>
 						</FormControl>
 					)}
 				</form>

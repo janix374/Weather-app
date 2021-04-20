@@ -24,7 +24,6 @@ class LocationMap extends Component {
 	}
 
 	render() {
-		console.log(this.props);
 		return (
 			<div style={{ height: '400px', width: '100%' }}>
 				<GoogleMapReact
