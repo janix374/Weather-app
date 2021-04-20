@@ -42,7 +42,7 @@ const WeatherCard = ({ item }) => {
 					City geo location, latitude : {item.coord.lat}
 				</Typography>
 			</Box> */}
-			{/* <LocationMap lng={item.coord.lon} lat={item.coord.lat} /> */}
+			<LocationMap lng={item.coord.lon} lat={item.coord.lat} />
 		</Grid>
 	);
 };
