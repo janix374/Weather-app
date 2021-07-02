@@ -13,6 +13,7 @@ import {
 import CenterFocusWeakTwoToneIcon from '@material-ui/icons/CenterFocusWeakTwoTone';
 import moment from 'moment';
 import IconWeather from './IconWeather';
+import VanilaEffect from '../vanilaEffect/VanilaEffect';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -86,11 +87,6 @@ const CardTemperature = ({
 						T
 					</Avatar>
 				}
-				action={
-					<IconButton aria-label='settings'>
-						<CenterFocusWeakTwoToneIcon />
-					</IconButton>
-				}
 				title={`${moment().format('MMM D YYYY')}`}
 				subheader=''
 			/>
@@ -100,27 +96,31 @@ const CardTemperature = ({
 					color: '#ffffff',
 				}}
 			>
-				<Typography
-					variant='body2'
-					component='p'
-					className={classes.contexClass}
-				>
-					{temp} &#8451;
-				</Typography>
-				<Typography
-					variant='body1'
-					component='p'
-					className={classes.contexClassDescription}
-				>
-					{description.toUpperCase()}
-				</Typography>
-				<Typography
-					variant='body2'
-					component='p'
-					className={classes.imageClasses}
-				>
-					<IconWeather condition={condition} />
-				</Typography>
+				<VanilaEffect>
+					<Typography
+						variant='body2'
+						component='p'
+						className={classes.contexClass}
+					>
+						{temp} &#8451;
+					</Typography>
+					<Typography
+						variant='body1'
+						component='p'
+						className={classes.contexClassDescription}
+					>
+						{description.toUpperCase()}
+					</Typography>
+				</VanilaEffect>
+				<VanilaEffect>
+					<Typography
+						variant='body2'
+						component='p'
+						className={classes.imageClasses}
+					>
+						<IconWeather condition={condition} />
+					</Typography>
+				</VanilaEffect>
 				<Typography variant='body2' component='p'>
 					Atmospheric pressure: {pressure} hPa
 				</Typography>

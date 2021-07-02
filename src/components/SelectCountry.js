@@ -8,6 +8,8 @@ import {
 	MenuItem,
 	Link,
 	TextField,
+	Box,
+	Switch,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import WetherEngine from './weatherLogic/WetherEngine';
@@ -36,10 +38,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const SelectCountry = () => {
+const SelectCountry = (props) => {
+	const { darkMode, setDarkMode } = props;
 	const selectCities = useSelector((state) => state.country);
 	const dispatch = useDispatch();
-
 	const classes = useStyles();
 	const [countryId, setCountryId] = useState(0);
 	const [city, setCity] = useState('');
@@ -81,21 +83,32 @@ const SelectCountry = () => {
 
 	return (
 		<Grid container>
-			<Grid item xs={12}>
-				<Typography variant='h4' component='h4'>
-					API from
-					<Link href='https://openweathermap.org'>
-						https://openweathermap.org
-					</Link>
-				</Typography>
+			<Grid item xs={12} m={2}>
+				<Box m={4}>
+					<Typography variant='h4' component='h4' color='primary'>
+						API from<span>&nbsp;</span>
+						<Link href='https://openweathermap.org'>
+							https://openweathermap.org
+						</Link>
+					</Typography>
+					<Typography variant='h5' component='p' color='primary'>
+						This API shows how the weather is above some cities
+					</Typography>
+					{/* <Switch
+						checked={darkMode}
+						onChange={() => setDarkMode(!darkMode)}
+						name='switch'
+						inputProps={{ 'aria-label': 'secondary checkbox' }}
+					/> */}
+				</Box>
 			</Grid>
 			<Grid item sm={12} md={3}>
-				<Typography variant='h5' component='h5'>
+				<Typography variant='h5' component='h5' color='primary'>
 					Choose a country
 				</Typography>
 
 				<form>
-					<FormControl className={classes.formControl}>
+					<FormControl className={classes.formControl} color='primary'>
 						<InputLabel id='demo-controlled-open-select-label'>
 							Country
 						</InputLabel>

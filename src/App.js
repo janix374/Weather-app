@@ -1,16 +1,17 @@
 import React from 'react';
 import { CssBaseline, Container } from '@material-ui/core';
 import SelectCountry from './components/SelectCountry';
+import withTheme from './components/theme/Theme';
 
-function App() {
+function App(props) {
 	return (
 		<div className='App'>
 			<CssBaseline />
 			<Container maxWidth='md'>
-				<SelectCountry />
+				<SelectCountry {...props} />
 			</Container>
 		</div>
 	);
 }
 
-export default App;
+export default withTheme(App);
