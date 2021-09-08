@@ -5,20 +5,16 @@ import {
 	Card,
 	CardHeader,
 	Typography,
-	IconButton,
 	Avatar,
 	CardContent,
 	CardActions,
 } from '@material-ui/core';
-import CenterFocusWeakTwoToneIcon from '@material-ui/icons/CenterFocusWeakTwoTone';
 import moment from 'moment';
 import IconWeather from './IconWeather';
-import VanilaEffect from '../vanilaEffect/VanilaEffect';
+// import VanilaEffect from '../vanilaEffect/VanilaEffect';
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		// maxWidth: 345,
-	},
+	root: {},
 	media: {
 		height: 0,
 		paddingTop: '56.25%', // 16:9
@@ -48,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
 		textAlign: 'center',
 		fontSize: '40px',
 	},
+	cardContentClass: {
+		position: 'relative',
+	},
 }));
 
 const CardTemperature = ({
@@ -65,7 +64,7 @@ const CardTemperature = ({
 	const weatherConditions = (temp) => {
 		let highColor = 0;
 		let lowColor = 0;
-		let bg = null;
+		// let bg = null;
 
 		// logic if 12 represent 0 , 46 represent 1
 		if (temp > 12) {
@@ -95,8 +94,9 @@ const CardTemperature = ({
 					background: weatherConditions(temp),
 					color: '#ffffff',
 				}}
+				className='card-content-class'
 			>
-				<VanilaEffect>
+				<div className='glass-container'>
 					<Typography
 						variant='body2'
 						component='p'
@@ -111,32 +111,28 @@ const CardTemperature = ({
 					>
 						{description.toUpperCase()}
 					</Typography>
-				</VanilaEffect>
-				<VanilaEffect>
-					<Typography
-						variant='body2'
-						component='p'
-						className={classes.imageClasses}
-					>
-						<IconWeather condition={condition} />
+				</div>
+				<Typography
+					variant='body2'
+					component='p'
+					className={classes.imageClasses}
+				>
+					<IconWeather condition={condition} />
+				</Typography>
+				<div className='glass-container temperature-description'>
+					<Typography variant='body2' component='p'>
+						Atmospheric pressure: {pressure} hPa
 					</Typography>
-				</VanilaEffect>
-				<Typography variant='body2' component='p'>
-					Atmospheric pressure: {pressure} hPa
-				</Typography>
-				<Typography variant='body2' component='p'>
-					Wind speed: {wind} m/s
-				</Typography>
-				<Typography variant='body2' component='p'>
-					Feels Like: {feelslike} &#8451;
-				</Typography>
-				{/* <Typography variant='body2' component='p'>
-					Sunrise time: {moment.unix(sunrise).format('HH:mm')}
-				</Typography>
-				<Typography variant='body2' component='p'>
-					Sunset time: {moment.unix(sunset).format('HH:mm')}
-				</Typography> */}
-				<p>{condition}</p>
+					<Typography variant='body2' component='p'>
+						Wind speed: {wind} m/s
+					</Typography>
+					<Typography variant='body2' component='p'>
+						Feels Like: {feelslike} &#8451;
+					</Typography>
+					<Typography variant='body2' component='p'>
+						{condition}
+					</Typography>
+				</div>
 			</CardContent>
 			<CardActions disableSpacing></CardActions>
 		</Card>

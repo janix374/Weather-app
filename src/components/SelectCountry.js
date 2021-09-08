@@ -9,22 +9,22 @@ import {
 	Link,
 	TextField,
 	Box,
-	Switch,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import WetherEngine from './weatherLogic/WetherEngine';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCountry } from '../redux/actions/countries';
-import countriesArray from './countriesArray';
+import countriesArray from './countries/countriesArray';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import weatherPics from '../img/maxresdefault.jpg';
 
 const useStyles = makeStyles((theme) => ({
 	button: {
 		display: 'block',
-		marginTop: theme.spacing(2),
+		marginTop: theme.spacing(4),
 	},
 	formControl: {
-		margin: theme.spacing(1),
+		margin: theme.spacing(4),
 		minWidth: 120,
 	},
 	imageWeather: {
@@ -34,12 +34,20 @@ const useStyles = makeStyles((theme) => ({
 		textAlign: 'center',
 	},
 	marginForCityNameInput: {
-		marginTop: '50px',
+		margin: theme.spacing(4),
+	},
+	formCountry: {
+		marginBottom: '100px',
+	},
+	itemCountryClass: {
+		marginLeft: '10px',
+	},
+	linkClass: {
+		overflow: 'hidden',
 	},
 }));
 
 const SelectCountry = (props) => {
-	const { darkMode, setDarkMode } = props;
 	const selectCities = useSelector((state) => state.country);
 	const dispatch = useDispatch();
 	const classes = useStyles();
@@ -83,7 +91,7 @@ const SelectCountry = (props) => {
 
 	return (
 		<Grid container>
-			<Grid item xs={12} m={2}>
+			<Grid item xs={12} className={classes.linkClass}>
 				<Box m={4}>
 					<Typography variant='h4' component='h4' color='primary'>
 						API from<span>&nbsp;</span>
@@ -92,17 +100,21 @@ const SelectCountry = (props) => {
 						</Link>
 					</Typography>
 					<Typography variant='h5' component='p' color='primary'>
-						This API shows how the weather is above some cities
+						weather API
 					</Typography>
-					{/* <Switch
-						checked={darkMode}
-						onChange={() => setDarkMode(!darkMode)}
-						name='switch'
-						inputProps={{ 'aria-label': 'secondary checkbox' }}
-					/> */}
 				</Box>
 			</Grid>
-			<Grid item sm={12} md={3}>
+			<Grid
+				item
+				xs={12}
+				className='wether-pics'
+				style={{
+					backgroundImage: `url(
+							${weatherPics}
+						)`,
+				}}
+			></Grid>
+			<Grid item sm={12} className={classes.formCountry}>
 				<Typography variant='h5' component='h5' color='primary'>
 					Choose a country
 				</Typography>
@@ -126,9 +138,11 @@ const SelectCountry = (props) => {
 									<MenuItem value={`${item.id}`} key={item.id}>
 										<img
 											src={process.env.PUBLIC_URL + `/flags/${item.img}`}
-											alt='a'
+											alt='country'
 										/>{' '}
-										{item.country}
+										<span className={classes.itemCountryClass}>
+											{item.country}
+										</span>
 									</MenuItem>
 								);
 							})}
@@ -153,31 +167,27 @@ const SelectCountry = (props) => {
 								{selectCities.cities.map((city, index) => {
 									return (
 										<MenuItem value={`${city}`} key={index}>
-											<LocationOnIcon /> {city}
+											<LocationOnIcon />
+											<span className={classes.itemCountryClass}>{city}</span>
 										</MenuItem>
 									);
 								})}
 							</Select>
-							<Typography
-								variant='body1'
-								component='p'
-								className={classes.marginForCityNameInput}
-							>
-								Or enter the city name
-							</Typography>
-							<TextField
-								className={classes.marginForCityNameInput}
-								id='outlined-required'
-								label='The city name'
-								variant='outlined'
-								value={city}
-								onChange={handleCity}
-							/>
 						</FormControl>
 					)}
+					<FormControl>
+						<TextField
+							className={classes.marginForCityNameInput}
+							id='outlined-required'
+							label='Enter city name'
+							variant='outlined'
+							value={city}
+							onChange={handleCity}
+						/>
+					</FormControl>
 				</form>
 			</Grid>
-			<Grid item sm={12} md={9} container>
+			<Grid item sm={12} container className={classes.forWetherEngine}>
 				{city.length > 0 ? <WetherEngine city={city} /> : <p></p>}
 			</Grid>
 		</Grid>

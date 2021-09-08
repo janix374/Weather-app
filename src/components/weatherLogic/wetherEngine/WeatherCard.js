@@ -1,12 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Box } from '@material-ui/core';
-import CardTemperature from './CardTemperature';
-import LocationMap from './LocationMap';
+import CardTemperature from './carditem/CardTemperature';
+import LocationMap from './carditem/LocationMap';
 
 const useStyles = makeStyles((theme) => ({
 	weatherClass: {
 		margin: 40,
+	},
+	weatherClassText: {
+		textShadow: '0 3px 10px rgba(0,0,0,1)',
 	},
 }));
 
@@ -15,10 +18,18 @@ const WeatherCard = ({ item }) => {
 
 	return (
 		<Grid item sm={12} className={classes.weatherClass}>
-			<Typography variant='h5' component='p'>
+			<Typography
+				variant='h5'
+				component='p'
+				className={classes.weatherClassText}
+			>
 				City : {item.name}
 			</Typography>
-			<Typography variant='h5' component='p'>
+			<Typography
+				variant='h5'
+				component='p'
+				className={classes.weatherClassText}
+			>
 				Country : {item.sys.country}
 			</Typography>
 			<Box component='span' m={1}>
@@ -33,8 +44,8 @@ const WeatherCard = ({ item }) => {
 					condition={item.weather[0].main}
 				/>
 			</Box>
-			<Box m={1}>
-				<Typography variant='body1' component='p'>
+			<Box className='geo-location-container'>
+				<Typography variant='body1' component='p' className='geo-location-text'>
 					City geo location on google map
 				</Typography>
 				<LocationMap lng={item.coord.lon} lat={item.coord.lat} />

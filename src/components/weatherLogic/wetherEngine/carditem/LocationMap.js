@@ -25,10 +25,10 @@ class LocationMap extends Component {
 
 	render() {
 		return (
-			<div style={{ height: '400px', width: '100%' }}>
+			<div style={{ height: '700px', width: '100%' }}>
 				<GoogleMapReact
-					// bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS_API_KEY }}
-					bootstrapURLKeys={{ key: 'AIzaSyCZSY4AW-l1ZkR828vnBpf3F3j9fhe7g6A' }}
+					// bootstrapURLKeys={{ key: 'AIzaSyCZSY4AW-l1ZkR828vnBpf3F3j9fhe7g6A' }}
+					bootstrapURLKeys={{ key: 'AIzaSyBg265-Ljsh1QF2o33YHECZF8LGszG-bzk' }}
 					defaultCenter={this.state.center}
 					defaultZoom={8}
 				>
